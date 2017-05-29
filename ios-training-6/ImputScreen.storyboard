@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JgM-ns-Dyy">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Imput Screen View Controller-->
+        <scene sceneID="I83-MS-dxN">
+            <objects>
+                <viewController storyboardIdentifier="ImputScreen" id="JgM-ns-Dyy" customClass="ImputScreenViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GRF-Dh-Rur"/>
+                        <viewControllerLayoutGuide type="bottom" id="6l7-AQ-4jh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qfq-JV-WOH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="69l-QJ-crp">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.69587981110887787" green="1" blue="0.86479446214192546" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="69l-QJ-crp" firstAttribute="top" secondItem="GRF-Dh-Rur" secondAttribute="bottom" id="775-F9-HjP"/>
+                            <constraint firstItem="69l-QJ-crp" firstAttribute="leading" secondItem="qfq-JV-WOH" secondAttribute="leading" id="PZo-Xe-SWA"/>
+                            <constraint firstAttribute="trailing" secondItem="69l-QJ-crp" secondAttribute="trailing" id="cOp-cG-4dG"/>
+                            <constraint firstItem="6l7-AQ-4jh" firstAttribute="top" secondItem="69l-QJ-crp" secondAttribute="bottom" id="jUG-4n-1Rc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="69l-QJ-crp" id="eQo-h7-zzj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v0v-3d-rku" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-85.599999999999994" y="-19.340329835082461"/>
+        </scene>
+    </scenes>
+</document>
