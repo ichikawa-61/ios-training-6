@@ -6,13 +6,17 @@
 //  Copyright © 2017 Manami Ichikawa. All rights reserved.
 //
 
+//View
 #import "TableDataProvider.h"
 #import "MemoCell.h"
+//Model
+#import "ManageMemo.h"
 #import "Memo.h"
+
 
 @interface TableDataProvider()
 @property(nonatomic, strong) NSArray *items;
-
+@property(nonatomic, strong) ManageMemo *db;
 @end
 
 @implementation TableDataProvider
@@ -30,8 +34,18 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    
     return self.items.count;
+}
+
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    
+    if(editingStyle == UITableViewCellEditingStyleDelete){
+        
+        if ([self.delegate respondsToSelector:@selector(removeMemoFromTable:)]) {
+            [self.delegate removeMemoFromTable:indexPath];
+        }
+    }
     
 }
 
@@ -44,7 +58,7 @@
     [df setDateFormat:@"yyyy/MM/dd/HH:mm "];
     //[df setTimeZone:[NSTimeZone defaultTimeZone]];
     //NSDateFormatter *timeZoneFormat = [[NSDateFormatter alloc]init];
-   // [timeZoneFormat setTimeZone:];
+    //[timeZoneFormat setTimeZone:];
     Memo *memo = [self.items objectAtIndex:indexPath.row];
     NSString *stringDate = memo.date;
     //NSLog(@"オオおおおお%@",stringDate);
@@ -57,8 +71,6 @@
     return cell;
     
 }
-
-
 
 
 

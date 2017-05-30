@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Title-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" sceneMemberID="viewController">
@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gzz-IL-Qyn">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="HdN-Kl-qPi">
@@ -36,13 +36,15 @@
                                 </prototypes>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aUR-K1-krE">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="574" width="375" height="44"/>
                                 <items>
                                     <barButtonItem title="メモの追加" id="Vuk-QR-2AW">
                                         <connections>
                                             <action selector="goToInputScreen:" destination="BYZ-38-t0r" id="Vw1-kX-wt7"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="UB9-ln-B6i"/>
+                                    <barButtonItem title="Item" width="55" id="wjE-WO-zup"/>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -58,7 +60,7 @@
                             <constraint firstItem="gzz-IL-Qyn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yKA-Ms-IK3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="84p-7o-aq8"/>
+                    <navigationItem key="navigationItem" title="Title" id="rQs-zx-pU5"/>
                     <connections>
                         <outlet property="tableView" destination="gzz-IL-Qyn" id="nfn-5d-rrQ"/>
                     </connections>
@@ -72,6 +74,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sf8-iO-IT5" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tRk-St-uwv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

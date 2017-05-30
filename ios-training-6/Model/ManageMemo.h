@@ -10,7 +10,7 @@
 #import "Memo.h"
 @protocol ManageMemoDelegate<NSObject>
 
-@optional
+//@optional
 
 -(void)finishedAddingNewMemo;
 
@@ -20,6 +20,7 @@
 @property (weak, nonatomic) id <ManageMemoDelegate> delegate;
 
 -(void)addNewMemo:(Memo*)memo;
--(NSArray*)showMemoList;
+-(NSMutableArray*)showMemoList;
+-(void)removeMemo:(NSInteger)memoId;
 
 @end

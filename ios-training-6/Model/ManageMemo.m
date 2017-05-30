@@ -8,7 +8,6 @@
 
 #import "ManageMemo.h"
 #import "FMDB.h"
-//#import "Memo.h"
 
 @interface ManageMemo()
 
@@ -31,13 +30,14 @@
     return self;
 }
 
--(NSArray*)showMemoList{
+
+-(NSMutableArray*)showMemoList{
     
     FMDatabase *db = [self getConnection];
     NSString *sqlite = @"SELECT* FROM t_memo ORDER BY memo_date ASC ";
     [db open];
     FMResultSet* results = [db executeQuery:sqlite];
-    NSMutableArray* list = [[NSMutableArray alloc] initWithCapacity:0];
+    NSMutableArray *list = [[NSMutableArray alloc] initWithCapacity:0];
     //       NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     //    [formatter setDateFormat:@"yyyy/MM/dd"];
     while ([results next]){
@@ -49,9 +49,11 @@
         memo.memoContents = [results stringForColumn:@"contents"];
        
         [list addObject:memo];
-
+        [self.delegate finishedAddingNewMemo];
     }
+    [db close];
     return list;
+    
 }
 
 -(void)addNewMemo:(Memo*)memo{
@@ -69,17 +71,34 @@
     BOOL t = [db executeUpdate:sql,title,date,contents];
     NSLog(@"%d",t);
     
+    [self.delegate finishedAddingNewMemo];
     [db commit];
     [db close];
     
     if([self.delegate respondsToSelector:@selector(finishedAddingNewMemo)]){
+        
         [self.delegate finishedAddingNewMemo];
+        
     }
+}
+
+-(void)removeMemo:(NSInteger)memoId{
+    
+    FMDatabase* db = [self getConnection];
+    [db open];
+    [db beginTransaction];
+    NSLog(@"よよよおy");
+    NSString *sql = @"DELETE FROM t_memo WHERE memo_id = ?;";
+    BOOL t = [db executeUpdate:sql,[NSNumber numberWithInteger:memoId]];
+    NSLog(@"DELETE: %d",t);
+    [db commit];
+    [db close];
 }
 
 +(NSString*)getDbFilePath{
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask,YES);
+    NSLog(@"%@",paths);
     NSString *dir = [paths
                      objectAtIndex:0];
     return [dir stringByAppendingPathComponent:@"memo.db"];    
@@ -89,8 +108,6 @@
     if(self.db_path == nil){
         self.db_path = [ManageMemo getDbFilePath];
     }
-    
-   // NSLog(@"パス:%@",_db_path);
     
     return [FMDatabase databaseWithPath:self.db_path];
 };

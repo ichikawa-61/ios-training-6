@@ -10,8 +10,7 @@
 #import "ManageMemo.h"
 #import "Memo.h"
 
-@interface ImputScreenViewController ()<UITextViewDelegate,ManageMemoDelegate>
-
+@interface ImputScreenViewController ()<UITextViewDelegate>
 
 @end
 
@@ -29,8 +28,6 @@
 
 }
 
-
-
 -(void)pushRegisterButton{
 
     ManageMemo *db = [[ManageMemo alloc]init];
@@ -44,8 +41,6 @@
     [lines removeObjectAtIndex:0];
     
     NSString *otherLines = [lines componentsJoinedByString:@""];
-    
-   
     
     NSDate *now = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -62,9 +57,4 @@
     [self.navigationController popViewControllerAnimated:YES];
     
 }
-
-
-
-
-
 @end
